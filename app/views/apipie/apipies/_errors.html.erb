@@ -1,0 +1,10 @@
+<% show_metadata = errors.reject { |err| err[:metadata].blank? }.size > 0 %>
+
+		<% errors.each do |err| %>
+			<%= err[:code] %>
+			<%= err[:description] %>
+				<% if show_metadata %>
+				<%= render(:partial => "metadata", :locals => {:meta => err[:metadata]}) unless err[:metadata].blank? %>
+				<% end %>
+
+		<% end %>
